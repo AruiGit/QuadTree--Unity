@@ -5,19 +5,19 @@ using UnityEngine;
 public class Rectangle 
 {
 
-    public int x, y, hight, width;
+    public float x, y, height, width;
 
-  public Rectangle(int x, int y, int hight, int width)
+  public Rectangle(float x, float y, float height, float width)
     {
         this.x = x;
         this.y = y;
-        this.hight = hight;
+        this.height = height;
         this.width = width;
     }
    
     public bool Cointains(Point point)
     {
-        if (point.x > x - width && point.x < x + width && point.y > y - hight && point.y < y + hight)
+        if (point.x > x - width && point.x < x + width && point.y > y - height && point.y < y + height)
         {
             return true;
         }
