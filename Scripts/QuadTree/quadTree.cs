@@ -34,7 +34,7 @@ public class quadTree
 
             if (subdivided == false)
             {
-                Subdivide();
+                Subdivide(point);
             }
 
             northWest.Insert(point);
@@ -46,17 +46,57 @@ public class quadTree
         } 
     }
 
-    void Subdivide() 
+    void Subdivide(Point point) 
     {
         Rectangle nw, ne, sw, se;
         nw = new Rectangle(boundary.x - boundary.width / 2, boundary.y + boundary.height / 2, boundary.height / 2, boundary.width / 2);
         northWest = new quadTree(nw, 4);
+        foreach (Point p in points)
+        {
+            if (nw.Cointains(point))
+            {
+                northWest.Insert(p);
+               // points.Remove(p);
+            }
+
+        }
+        
         ne = new Rectangle(boundary.x + boundary.width / 2, boundary.y + boundary.height / 2, boundary.height / 2, boundary.width / 2);
         northEast = new quadTree(ne, 4);
+        foreach (Point p in points)
+        {
+            if (ne.Cointains(point))
+            {
+                northEast.Insert(p);
+               // points.Remove(p);
+            }
+
+        }
+
         sw = new Rectangle(boundary.x - boundary.width / 2, boundary.y - boundary.height / 2, boundary.height / 2, boundary.width / 2);
         southWest = new quadTree(sw, 4);
+        foreach (Point p in points)
+        {
+            if (sw.Cointains(point))
+            {
+                southWest.Insert(p);
+              //  points.Remove(p);
+            }
+
+        }
+
         se = new Rectangle(boundary.x + boundary.width / 2, boundary.y - boundary.height / 2, boundary.height / 2, boundary.width / 2);
         southEast = new quadTree(se, 4);
+        foreach (Point p in points)
+        {
+            if (se.Cointains(point))
+            {
+                southEast.Insert(p);
+              // points.Remove(p);
+            }
+
+        }
+
         subdivided = true;
     }
 
